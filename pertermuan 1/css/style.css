@@ -1,0 +1,86 @@
+
+* { 
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #a5b0e0;
+    color: #333;
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+}
+header {
+    background-color: #0b1657;
+    color: white;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
+section {
+    background-color: #fff;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rg(0,0,0,0,1);
+}
+.background {
+    background-color: #c1dbeb;
+    height: 150px;
+}
+
+.gambar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 5px;
+}
+.gambar img {
+    width: 250px;
+    height: 170px;
+    margin: 5px;
+}
+footer {
+    background-color: #0b1657;
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+form input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #111010;
+}
+form label {
+    font-weight: bold;
+    display: block;
+}
+form input[type="submit"]:hover {
+    background-color: #4af805;
+}
+form input[type="text"],
+form input[type="email"],
+form input[type="date"],
+form textarea {
+    width: 40%;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}

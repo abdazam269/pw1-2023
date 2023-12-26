@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>basic js</title>
+</head>
+<body>
+    <p id="name"></p>
+    <input type="number" id="dinoAge" min="1">
+    <button onclick="getstatus()">check</button>
+    <p id="status"></p>
+
+    <script>
+        let name = 'bambang';
+        
+        document.getElementById("name").innerHTML = ` name is ${name}`;
+
+        function getstatus() {
+            let dinoAge = document.getElementById("status").value;
+            
+            if (dinoAge < 800) {
+                return document.getElementById("status").innerHTML = "blm cukup umur";
+            } else if (dinoAge > 800) {
+                return document.getElementById("status").innerHTML = "sudah dewasa";
+            } else {
+                return  document.getElementById("status").innerHTML = "pas";
+            }
+        }
+        
+        // let name = 'bambang';
+        // let dinoAge = 700;
+        // let isMarried = false;
+        // document.getElementById("name").innerHTML = `name is ${name}`;
+
+        // document.write(`dino name is ${dinoname}, dino age ${dinoAge}`);
+        // console.log(`dino name is ${dinoname}, dino age ${dinoAge}`);
+        // console.log("dino name is " + dinoname + "," + "dino age " + dinoAge );
+
+    </script>
+</body>
+</html>

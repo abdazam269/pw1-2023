@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            background-color:aliceblue;
+            margin: 0;
+            height: 600px;
+        }
+
+        .container {
+            background-color:rgb(170, 127, 83);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 320px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="time"],
+        input[type="number"] {
+            width: 300px;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #000;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color:rgb(0, 0, 0);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color:rgb(31, 235, 13);
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+    <title>Validation Form</title>
+</head>
+<body>
+<div class="container">
+    <form id="myForm">
+        <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required maxlength="30">
+        <div id="nameError" class="error"></div>
+        </div>
+
+        <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <div id="emailError" class="error"></div>
+        </div> 
+
+        <div class="form-group">
+        <label for="departureTime">Departure Time:</label>
+        <input type="time" id="departureTime" required>
+        <div id="timeError" class="error"></div>
+        </div>
+
+        <div class="form-group">
+        <label for="numTickets">Number of Tickets:</label>
+        <input type="number" id="numTickets" required min="1" max="10">
+        <div id="ticketsError" class="error"></div>
+        </div>
+
+        <button type="button" onclick="validasiForm()">Submit</button>
+    </form>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    function validasiForm() {
+        
+        document.getElementById('nameError').innerText = "";
+        document.getElementById('emailError').innerText = "";
+        document.getElementById('timeError').innerText = "";
+        document.getElementById('ticketsError').innerText = "";
+
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const departureTime = document.getElementById('departureTime').value;
+        const numTickets = document.getElementById('numTickets').value;
+
+       
+        let isValid = true;
+
+        if (name.length === 0 || name.length > 30) {
+            document.getElementById('nameError').innerText = "Name is required (maximum 30 characters).";
+            isValid = false;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            document.getElementById('emailError').innerText = "Enter a valid email address.";
+            isValid = false;
+        }
+
+        const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+        if (!timeRegex.test(departureTime)) {
+            document.getElementById('timeError').innerText = "Enter a valid 24-hour time format (HH:mm).";
+            isValid = false;
+        }
+
+        if (numTickets < 1 || numTickets > 10 || isNaN(numTickets)) {
+            document.getElementById('ticketsError').innerText = "Number of tickets must be between 1 and 10.";
+            isValid = false;
+        }
+
+        if (isValid) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <h2>Form Data:</h2>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Departure Time:</strong> ${departureTime}</p>
+                <p><strong>Number of Tickets:</strong> ${numTickets}</p>
+            `;
+        }
+    }
+</script>
+
+</body>
+</html>
